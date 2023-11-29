@@ -45,9 +45,15 @@ export function useMovies(query: string): MoviesState {
 
         setMovies(data.Search);
         setError('');
-      } catch (err) {
-      console.log(err);
+      } catch (err:any) {
+        if (err.name !== 'AbortError') {
       
+          if (err.message === 'Movie not found') {
+            setError('No movies found. Please try a different search.');
+          } else {
+            setError('Something went wrong with fetching movies.');
+          }
+        }
       } finally {
         setIsLoading(false);
       }
