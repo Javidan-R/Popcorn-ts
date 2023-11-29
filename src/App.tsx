@@ -320,7 +320,6 @@ const WatchedSummary: React.FC<WatchedSummaryProps> = ({ watched }) => {
   const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
   const avgUserRating = average(watched.map((movie) => movie.userRating));
   const avgRuntime = average(watched.map((movie) => movie.runtime));
-  const avgYear = average(watched.map((movie)=> Number(movie.year)))
 
   return (
     <div className="summary">
@@ -340,12 +339,9 @@ const WatchedSummary: React.FC<WatchedSummaryProps> = ({ watched }) => {
         </p>
         <p>
           <span>⏳</span>
-          <span>{avgRuntime} min</span>
+          <span>{avgRuntime.toFixed(0)} min</span>
         </p>
-        <p>
-        <span>📅</span>
-        <span>{avgYear.toFixed(0)}</span>
-      </p>
+       
       <p>
         <span>Action</span>
        
