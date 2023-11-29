@@ -46,10 +46,8 @@ export function useMovies(query: string): MoviesState {
         setMovies(data.Search);
         setError('');
       } catch (err) {
-        if (err.name !== 'AbortError') {
-          console.log(err.message);
-          setError(err.message);
-        }
+      console.log(err);
+      
       } finally {
         setIsLoading(false);
       }
