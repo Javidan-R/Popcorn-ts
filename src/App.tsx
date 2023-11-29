@@ -3,7 +3,6 @@ import StarRating from "./StarRating";
 import { useKey } from "./useKey";
 import { useLocalStorageState } from "./useLocalStorageState";
 import { useMovies } from "./useMovies";
-
 interface AppProps { }
 interface Movie {
   imdbID:  string;
@@ -343,8 +342,8 @@ const WatchedSummary: React.FC<WatchedSummaryProps> = ({ watched }) => {
         </p>
        
       <p>
+        <span>👎</span>
         <span>Action</span>
-       
       </p>
       </div>
     </div>
