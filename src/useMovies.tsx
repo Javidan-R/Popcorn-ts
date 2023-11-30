@@ -1,7 +1,7 @@
 // useMovies.tsx
 import { useState, useEffect } from 'react';
 
-const KEY = 'f63be296';
+const KEY = 'f84fc31d';
 
 export interface Movie {
   imdbID: string;
