@@ -22,28 +22,33 @@ export function useMovies(query: string): MoviesState {
       try {
         setIsLoading(true);
         setError("");
-        const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
-          { signal: controller.signal }
-        );
+        
+        const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {
+          signal: controller.signal,
+        });
+    
         if (!res.ok) {
-          throw new Error("Something went wrong with fetching movies");
+          throw new Error(`Failed to fetch movies. Status: ${res.status}`);
         }
+    
         const data = await res.json();
+    
         if (data.Response === "False") {
-          throw new Error("Movie not found");
+          throw new Error("No movies found for the given query.");
         }
+    
         setMovies(data.Search);
         setError("");
       } catch (err: any) {
         if (err.name !== "AbortError") {
-          console.log(err.message);
-          setError(err.message);
+          console.error(err.message);
+          setError("Error fetching movies. Please try again later.");
         }
       } finally {
         setIsLoading(false);
       }
     }
+    
     if (query.length < 3) {
       setMovies([]);
       setError("");
