@@ -16,7 +16,7 @@ interface Movie {
   Actors?: string;
   Director?: string;
   Genre?: string;
-  // Add other properties as needed
+
 }[]
 
 interface WatchedMovie {
